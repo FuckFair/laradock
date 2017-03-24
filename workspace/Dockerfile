@@ -58,6 +58,7 @@ ENV INSTALL_SOAP ${INSTALL_SOAP}
 
 RUN if [ ${INSTALL_SOAP} = true ]; then \
   # Install the PHP SOAP extension
+  sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
   apt-get -y update && \
   add-apt-repository -y ppa:ondrej/php && \
   apt-get -y install libxml2-dev php7.0-soap && \
